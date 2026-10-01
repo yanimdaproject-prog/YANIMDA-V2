@@ -1,0 +1,11 @@
+{
+  "name":"YANIMDA — Her zaman yanında.",
+  "short_name":"YANIMDA",
+  "start_url":"./",
+  "display":"standalone",
+  "background_color":"#07111f",
+  "theme_color":"#0B1220",
+  "lang":"tr",
+  "description":"Yeni bir ülkede günlük hayatını kolaylaştıran YANIMDA uygulaması.",
+  "icons":[]
+}

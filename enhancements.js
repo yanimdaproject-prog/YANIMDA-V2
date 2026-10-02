@@ -10,9 +10,9 @@
 (function(){
   'use strict';
 
-  const ONBOARDING_KEY = 'yanimda_onboarding_v3';
+  const ONBOARDING_KEY = 'yanimda_onboarding_v4_final';
   // Reset only older test onboarding markers so this release gets one clean language choice.
-  try { localStorage.removeItem('yanimda_onboarding_v2'); } catch(e) {}
+  try { ['yanimda_onboarding_v2','yanimda_onboarding_v3'].forEach(k=>localStorage.removeItem(k)); } catch(e) {}
 
   // The current V2 may already have an Arabic language saved from testing.
   // On this new version, show the language picker once so the first experience
@@ -348,7 +348,7 @@
       <div class="nl-photo-grid">
         ${nlPhotoPlaces.map(p=>`
           <article class="nl-photo-card">
-            <img src="${p.image}" alt="${safe(p.title[l]||p.title.tr)}" loading="lazy">
+            <img src="${p.image}" alt="${safe(p.title[l]||p.title.tr)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.closest('.nl-photo-card')?.classList.add('photo-load-error');">
             <div class="nl-photo-body">
               <h3>${safe(p.title[l]||p.title.tr)}</h3>
               <p>${safe(p.text[l]||p.text.tr)}</p>
@@ -374,10 +374,54 @@
     .nl-photo-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
     .photo-map{display:inline-flex;text-decoration:none!important;padding:10px 13px!important;font-size:13px!important}
     .photo-source{color:#aabbd0;font-size:12px;font-weight:750;text-decoration:none}
-    .photo-license-note{margin-top:14px;margin-bottom:20px}
+    .photo-license-note{margin-top:14px;margin-bottom:20px}.photo-load-error img{opacity:.15}.photo-load-error:after{content:'Fotoğraf yüklenemedi';display:block;padding:12px;color:#9fb0c4;font-size:12px}
     @media(min-width:700px){.nl-photo-grid{grid-template-columns:1fr 1fr}.nl-photo-card img{height:210px}}
     @media(max-width:420px){.nl-photo-card img{height:175px}.nl-photo-body{padding:14px}}
   `;
   const photoStyle=document.createElement('style'); photoStyle.textContent=photoCss; document.head.appendChild(photoStyle);
+
+  // FINAL VOICE LAYER: use a Dutch nl-NL voice when available, wait for iOS/Safari
+  // voices to load, and keep adult/kids delivery deliberately clear and gentle.
+  function speakFinal(text, profile){
+    if(!('speechSynthesis' in window) || typeof SpeechSynthesisUtterance==='undefined'){
+      if(typeof toast==='function') toast((typeof tr==='function'?tr('noSpeech'):'Speech playback is not available.'));
+      return;
+    }
+    const synth=window.speechSynthesis;
+    synth.cancel();
+    let started=false;
+    const start=()=>{
+      if(started) return;
+      started=true;
+      try{ synth.removeEventListener('voiceschanged',start); }catch(e){}
+      const u=new SpeechSynthesisUtterance(String(text));
+      u.lang='nl-NL';
+      u.rate=profile.rate;
+      u.pitch=profile.pitch;
+      u.volume=profile.volume;
+      const voices=synth.getVoices ? synth.getVoices() : [];
+      u.voice=voices.find(v=>(v.lang||'').toLowerCase()==='nl-nl') ||
+               voices.find(v=>(v.lang||'').toLowerCase().startsWith('nl')) || null;
+      try{ synth.resume(); synth.speak(u); }
+      catch(e){ if(typeof toast==='function') toast((typeof tr==='function'?tr('noSpeech'):'Speech playback is not available.')); }
+    };
+    const voices=synth.getVoices ? synth.getVoices() : [];
+    if(voices.length) start();
+    else {
+      try{ synth.addEventListener('voiceschanged',start,{once:true}); }catch(e){}
+      setTimeout(start,800);
+    }
+  }
+  window.speak=function(text){ speakFinal(text,{rate:0.74,pitch:1.0,volume:1}); };
+  window.speakKids=function(text){ speakFinal(text,{rate:0.66,pitch:1.08,volume:0.95}); };
+
+  // FINAL FIRST-ENTRY RULE: this release gets its own onboarding version.
+  // Existing test data cannot silently force Arabic (or another language) on first launch.
+  try{
+    if(!localStorage.getItem(ONBOARDING_KEY)){
+      localStorage.removeItem('yanimda_lang');
+      if(typeof setup==='function') setTimeout(()=>setup(),0);
+    }
+  }catch(e){}
 
 })();

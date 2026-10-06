@@ -1,11 +1,11 @@
 {
-  "name":"YANIMDA — Her zaman yanında.",
-  "short_name":"YANIMDA",
-  "start_url":"./",
-  "display":"standalone",
-  "background_color":"#07111f",
-  "theme_color":"#07111f",
-  "description":"Hollanda'da günlük hayat ve pratik Hollandaca öğrenme.",
-  "lang":"tr",
-  "dir":"auto"
+  "name": "YANIMDA — Always by your side",
+  "short_name": "YANIMDA",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#07111f",
+  "theme_color": "#07111f",
+  "description": "An everyday companion for learning Dutch and navigating life in a new country.",
+  "lang": "tr",
+  "dir": "auto"
 }

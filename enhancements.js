@@ -293,37 +293,49 @@
     setTimeout(()=>{ if(typeof setup==='function') setup(); }, 0);
   }
 
-  // Real Netherlands discovery photos. These are Wikimedia Commons files with
-  // public-domain / CC0 status, kept as external sources so we do not copy
-  // unlicensed images into the repository. Each card links back to its source.
+  // FINAL EXPLORE EXPERIENCE — curated, high-resolution Commons photos.
+  // We use external Commons files and link to the exact source/licence page;
+  // no image is copied into the repository.
   const nlPhotoPlaces = [
     {
-      title:{tr:'Amsterdam kanalları',en:'Amsterdam canals',ar:'قنوات أمستردام'},
-      text:{tr:'Kanallar, köprüler ve şehir yürüyüşleri.',en:'Canals, bridges and city walks.',ar:'قنوات وجسور ونزهات في المدينة.'},
-      image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Amsterdam_canals.jpg',
-      source:'https://commons.wikimedia.org/wiki/File:Amsterdam_canals.jpg',
-      map:'https://www.google.com/maps/search/?api=1&query=Amsterdam+Netherlands'
+      title:{tr:'Amsterdam — kanallar & bisikletler',en:'Amsterdam — canals & bikes',ar:'أمستردام — القنوات والدراجات'},
+      text:{tr:'Amsterdam’ın en ikonik görüntülerinden biri: kanal, köprü ve bisikletler.',en:'One of Amsterdam’s most iconic scenes: a canal, bridge and bikes.',ar:'من أشهر مشاهد أمستردام: قناة وجسر ودراجات.'},
+      image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Amsterdam_-_Canal%2C_Bridge_and_Bike.jpg',
+      source:'https://commons.wikimedia.org/wiki/File:Amsterdam_-_Canal,_Bridge_and_Bike.jpg',
+      map:'https://www.google.com/maps/search/?api=1&query=Amsterdam+Netherlands',
+      credit:'Sumit Surai — CC BY-SA 4.0'
     },
     {
       title:{tr:'Giethoorn',en:'Giethoorn',ar:'خيتورن'},
-      text:{tr:'Su kanalları ve sakin köy havası.',en:'Canals and a peaceful village atmosphere.',ar:'قنوات مائية وأجواء قرية هادئة.'},
+      text:{tr:'Kanallar, küçük köprüler ve sakin bir köy atmosferi.',en:'Canals, little bridges and a peaceful village atmosphere.',ar:'قنوات وجسور صغيرة وأجواء قرية هادئة.'},
       image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Giethoorn_canal.jpg',
       source:'https://commons.wikimedia.org/wiki/File:Giethoorn_canal.jpg',
-      map:'https://www.google.com/maps/search/?api=1&query=Giethoorn+Netherlands'
+      map:'https://www.google.com/maps/search/?api=1&query=Giethoorn+Netherlands',
+      credit:'Wikimedia Commons — CC0'
     },
     {
       title:{tr:'De Hoge Veluwe',en:'De Hoge Veluwe',ar:'منتزه دي هوخه فيلوفه'},
-      text:{tr:'Doğa, orman ve uzun yürüyüşler.',en:'Nature, woodland and long walks.',ar:'الطبيعة والغابات والمشي لمسافات طويلة.'},
-      image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/20161026_De_Pollen5_Hoge_Veluwe.jpg',
-      source:'https://commons.wikimedia.org/wiki/File:20161026_De_Pollen5_Hoge_Veluwe.jpg',
-      map:'https://www.google.com/maps/search/?api=1&query=Hoge+Veluwe+National+Park+Netherlands'
+      text:{tr:'Orman, kumlu yollar ve geniş Hollanda doğası.',en:'Woodland, sandy paths and wide-open Dutch nature.',ar:'غابات ومسارات رملية وطبيعة هولندية واسعة.'},
+      image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/De_Hoge_Veluwe_landscape.jpg',
+      source:'https://commons.wikimedia.org/wiki/File:De_Hoge_Veluwe_landscape.jpg',
+      map:'https://www.google.com/maps/search/?api=1&query=De+Hoge+Veluwe+Netherlands',
+      credit:'Deb Collins — CC BY 2.0'
     },
     {
-      title:{tr:'Rotterdam & Erasmusbrug',en:'Rotterdam & Erasmus Bridge',ar:'روتردام وجسر إيراسموس'},
-      text:{tr:'Şehir manzarası ve Nieuwe Maas.',en:'City views and the Nieuwe Maas.',ar:'إطلالات المدينة ونهر نيوي ماس.'},
-      image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Erasmus_Bridge_and_the_Nieuwe_Maas_River_in_Rotterdam.jpg',
-      source:'https://commons.wikimedia.org/wiki/File:Erasmus_Bridge_and_the_Nieuwe_Maas_River_in_Rotterdam.jpg',
-      map:'https://www.google.com/maps/search/?api=1&query=Erasmusbrug+Rotterdam+Netherlands'
+      title:{tr:'Rotterdam — Erasmusbrug',en:'Rotterdam — Erasmus Bridge',ar:'روتردام — جسر إيراسموس'},
+      text:{tr:'Modern şehir silüeti ve Nieuwe Maas manzarası.',en:'A modern skyline and the Nieuwe Maas river.',ar:'أفق مدينة حديث ونهر نيوي ماس.'},
+      image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Erasmusbrug_in_Rotterdam.jpg',
+      source:'https://commons.wikimedia.org/wiki/File:Erasmusbrug_in_Rotterdam.jpg',
+      map:'https://www.google.com/maps/search/?api=1&query=Erasmusbrug+Rotterdam+Netherlands',
+      credit:'Wikimedia Commons — see source licence'
+    },
+    {
+      title:{tr:'Kinderdijk — yel değirmenleri',en:'Kinderdijk — windmills',ar:'كيندرديك — طواحين الهواء'},
+      text:{tr:'Hollanda’nın en tanınan manzaralarından biri: tarihi yel değirmenleri.',en:'One of the Netherlands’ most iconic landscapes: historic windmills.',ar:'من أشهر مناظر هولندا: طواحين الهواء التاريخية.'},
+      image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/KinderdijkWindmills.jpg',
+      source:'https://commons.wikimedia.org/wiki/File:KinderdijkWindmills.jpg',
+      map:'https://www.google.com/maps/search/?api=1&query=Kinderdijk+Netherlands',
+      credit:'Willard84 — CC BY 3.0'
     }
   ];
 
@@ -331,54 +343,116 @@
     const l = (typeof lang === 'function' ? lang() : 'tr') || 'tr';
     const safe = typeof esc === 'function' ? esc : (v => String(v));
     const t = {
-      tr:{title:'Hollanda’yı keşfet',desc:'Yaşadığın ülkeyi sadece haritada değil, fotoğraflarıyla da tanı.',photos:'Güzel yerler',open:'Haritada aç →',source:'Fotoğraf kaynağı',note:'Fotoğraflar Wikimedia Commons’tan, kullanım izinleriyle birlikte seçildi.'},
-      en:{title:'Discover the Netherlands',desc:'Get to know the country you live in through real places and photos.',photos:'Beautiful places',open:'Open on map →',source:'Photo source',note:'Photos are selected from Wikimedia Commons with their stated reuse permissions.'},
-      ar:{title:'اكتشف هولندا',desc:'تعرّف على البلد الذي تعيش فيه من خلال أماكن حقيقية وصور جميلة.',photos:'أماكن جميلة',open:'افتح على الخريطة ←',source:'مصدر الصورة',note:'تم اختيار الصور من ويكيميديا كومنز مع مراعاة شروط الاستخدام المذكورة.'}
-    }[l];
-    screen.innerHTML = `
-      <button class="back" onclick="show('home')">${safe(typeof tr==='function'?tr('back'):'← Geri')}</button>
-      <section class="explore-hero explore-hero-pro">
-        <span class="eyebrow">🧭 YANIMDA</span>
-        <h1>${safe(t.title)}</h1>
-        <p>${safe(t.desc)}</p>
-        <button class="primary" onclick="requestLocation()">📍 ${safe(typeof tr==='function'?tr('exploreLocation'):'Konumuma göre keşfet')}</button>
-        <div class="explore-note">🔒 ${safe(typeof tr==='function'?tr('exploreNote'):'Konumunu kaydetmiyoruz; yalnızca arama için kullanıyoruz.')}</div>
-      </section>
-      <div class="section-head"><h2>${safe(t.photos)}</h2><span>🇳🇱</span></div>
-      <div class="nl-photo-grid">
-        ${nlPhotoPlaces.map(p=>`
-          <article class="nl-photo-card">
-            <img src="${p.image}" alt="${safe(p.title[l]||p.title.tr)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.closest('.nl-photo-card')?.classList.add('photo-load-error');">
-            <div class="nl-photo-body">
-              <h3>${safe(p.title[l]||p.title.tr)}</h3>
-              <p>${safe(p.text[l]||p.text.tr)}</p>
-              <div class="nl-photo-actions">
-                <a class="primary photo-map" href="${p.map}" target="_blank" rel="noopener">${safe(t.open)}</a>
-                <a class="photo-source" href="${p.source}" target="_blank" rel="noopener">${safe(t.source)}</a>
-              </div>
-            </div>
-          </article>`).join('')}
+      tr:{title:'Hollanda’yı keşfet',desc:'Güzel yerleri sadece listelemeyelim. Önce gör, sonra gitmek isteyip istemediğine karar ver.',photos:'Şimdi keşfet',open:'Haritada aç',source:'Fotoğraf & lisans',note:'Fotoğraflar Wikimedia Commons’taki yeniden kullanım koşulları kontrol edilerek seçildi.',location:'Konumuma göre keşfet',locationNote:'Konumunu kaydetmiyoruz. İzin verirsen yalnızca arama için kullanılır.'},
+      en:{title:'Discover the Netherlands',desc:'See beautiful places first, then decide where you want to go.',photos:'Places worth seeing',open:'Open on map',source:'Photo & licence',note:'Photos are selected from Wikimedia Commons with their stated reuse terms.',location:'Discover near me',locationNote:'Your location is not stored. If allowed, it is used only for the search.'},
+      ar:{title:'اكتشف هولندا',desc:'شاهد الأماكن الجميلة أولاً، ثم قرر أين تريد الذهاب.',photos:'أماكن تستحق الزيارة',open:'افتح على الخريطة',source:'الصورة والترخيص',note:'تم اختيار الصور من ويكيميديا كومنز مع مراعاة شروط إعادة الاستخدام.',location:'اكتشف بالقرب مني',locationNote:'لا نقوم بحفظ موقعك. يُستخدم فقط للبحث إذا سمحت بذلك.'}
+    }[l] || null;
+
+    const cards = nlPhotoPlaces.map((p,i)=>`<article class="nl-photo-card ${i===0?'featured':''}">
+      <div class="nl-photo-media">
+        <img src="${p.image}" alt="${safe(p.title[l]||p.title.tr)}" loading="${i<2?'eager':'lazy'}" referrerpolicy="no-referrer" onerror="this.closest('.nl-photo-card')?.classList.add('photo-load-error');">
+        <div class="nl-photo-shade"></div><span class="place-number">0${i+1}</span>
+        <span class="place-badge">🇳🇱 Netherlands</span>
       </div>
-      <div class="explore-note photo-license-note">${safe(t.note)}</div>
-    `;
+      <div class="nl-photo-body">
+        <h3>${safe(p.title[l]||p.title.tr)}</h3><p>${safe(p.text[l]||p.text.tr)}</p>
+        <div class="nl-photo-actions"><a class="primary photo-map" href="${p.map}" target="_blank" rel="noopener">${safe(t.open)} →</a><a class="photo-source" href="${p.source}" target="_blank" rel="noopener">${safe(t.source)}</a></div>
+        <small class="photo-credit">${safe(p.credit)}</small>
+      </div>
+    </article>`).join('');
+
+    screen.innerHTML = `<button class="back" onclick="show('home')">${safe(typeof tr==='function'?tr('back'):'← Back')}</button>
+      <section class="explore-hero explore-hero-pro">
+        <div class="explore-orb" aria-hidden="true">🧭</div><span class="eyebrow">YANIMDA · EXPLORE</span>
+        <h1>${safe(t.title)}</h1><p>${safe(t.desc)}</p>
+        <button class="primary" onclick="requestLocation()">📍 ${safe(t.location)}</button>
+        <div class="explore-note">🔒 ${safe(t.locationNote)}</div>
+      </section>
+      <div class="section-head explore-section-head"><div><span class="eyebrow">${safe(t.photos)}</span><h2>${safe(t.photos)}</h2></div><span class="explore-count">${nlPhotoPlaces.length}</span></div>
+      <div class="nl-photo-grid">${cards}</div>
+      <div class="explore-note photo-license-note">${safe(t.note)}</div>`;
   };
 
   const photoCss = `
-    .explore-hero-pro{margin-top:12px}
-    .nl-photo-grid{display:grid;grid-template-columns:1fr;gap:14px}
-    .nl-photo-card{overflow:hidden;border:1px solid var(--line);border-radius:22px;background:#0d1b2d;box-shadow:var(--shadow)}
-    .nl-photo-card img{display:block;width:100%;height:190px;object-fit:cover;background:#14263d}
-    .nl-photo-body{padding:15px}
-    .nl-photo-body h3{margin:0 0 6px;font-size:19px}
-    .nl-photo-body p{margin:0 0 13px;color:var(--muted);line-height:1.5;font-size:13px}
-    .nl-photo-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-    .photo-map{display:inline-flex;text-decoration:none!important;padding:10px 13px!important;font-size:13px!important}
-    .photo-source{color:#aabbd0;font-size:12px;font-weight:750;text-decoration:none}
-    .photo-license-note{margin-top:14px;margin-bottom:20px}.photo-load-error img{opacity:.15}.photo-load-error:after{content:'Fotoğraf yüklenemedi';display:block;padding:12px;color:#9fb0c4;font-size:12px}
-    @media(min-width:700px){.nl-photo-grid{grid-template-columns:1fr 1fr}.nl-photo-card img{height:210px}}
-    @media(max-width:420px){.nl-photo-card img{height:175px}.nl-photo-body{padding:14px}}
+    .explore-hero-pro{position:relative;overflow:hidden;margin-top:12px;padding:25px 20px 22px;border-radius:26px;background:radial-gradient(circle at 85% 10%,rgba(255,107,61,.28),transparent 36%),linear-gradient(145deg,#0b1728,#12243b);border:1px solid rgba(255,255,255,.08);box-shadow:0 18px 45px rgba(0,0,0,.22)}
+    .explore-orb{position:absolute;right:18px;top:15px;width:66px;height:66px;display:grid;place-items:center;border-radius:22px;background:rgba(255,255,255,.08);font-size:31px;animation:yanimdaFloat 4s ease-in-out infinite}
+    .explore-section-head{align-items:end}.explore-section-head h2{margin:4px 0 0}.explore-count{min-width:38px;height:38px;border-radius:13px;display:grid;place-items:center;background:rgba(255,107,61,.13);color:#ff8c68;font-weight:900}
+    .nl-photo-grid{display:grid;grid-template-columns:1fr;gap:16px}.nl-photo-card{overflow:hidden;border:1px solid rgba(255,255,255,.08);border-radius:24px;background:linear-gradient(180deg,#0d1b2d,#0b1727);box-shadow:0 14px 38px rgba(0,0,0,.22);transform:translateZ(0);transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}.nl-photo-card:hover{transform:translateY(-3px);border-color:rgba(255,107,61,.4);box-shadow:0 20px 50px rgba(0,0,0,.28)}
+    .nl-photo-card.featured{border-color:rgba(255,107,61,.25)}.nl-photo-media{position:relative;height:235px;overflow:hidden;background:#14263d}.nl-photo-card.featured .nl-photo-media{height:280px}.nl-photo-card img{display:block;width:100%;height:100%;object-fit:cover;transition:transform 7s ease}.nl-photo-card:hover img{transform:scale(1.045)}.nl-photo-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.02) 30%,rgba(0,0,0,.62) 100%);pointer-events:none}.place-number{position:absolute;left:15px;bottom:13px;font-size:12px;font-weight:900;color:#fff;opacity:.82}.place-badge{position:absolute;right:12px;top:12px;padding:7px 10px;border-radius:999px;background:rgba(7,17,31,.66);backdrop-filter:blur(10px);color:#fff;font-size:11px;font-weight:800}.nl-photo-body{padding:16px}.nl-photo-body h3{margin:0 0 6px;font-size:19px;letter-spacing:-.2px}.nl-photo-body p{margin:0 0 14px;color:var(--muted);line-height:1.55;font-size:13px}.nl-photo-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.photo-map{display:inline-flex;text-decoration:none!important;padding:10px 13px!important;font-size:13px!important}.photo-source{color:#aabbd0;font-size:12px;font-weight:800;text-decoration:none}.photo-credit{display:block;margin-top:11px;color:#6f8299;font-size:10px;line-height:1.4}.photo-license-note{margin-top:14px;margin-bottom:24px}.photo-load-error{background:linear-gradient(135deg,#18283d,#0b1727)}.photo-load-error img{opacity:.05}.photo-load-error:after{content:'Photo unavailable — source';display:block;padding:14px;color:#9fb0c4;font-size:12px}
+    @keyframes yanimdaFloat{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-5px) rotate(2deg)}}
+    @media(min-width:700px){.nl-photo-grid{grid-template-columns:1.15fr 1fr}.nl-photo-card.featured{grid-row:span 2}.nl-photo-card.featured .nl-photo-media{height:100%;min-height:420px}.nl-photo-card:not(.featured) .nl-photo-media{height:190px}}
+    @media(max-width:420px){.nl-photo-media{height:205px}.nl-photo-card.featured .nl-photo-media{height:245px}.nl-photo-body{padding:14px}.explore-orb{width:55px;height:55px;font-size:25px}}
+    @media(prefers-reduced-motion:reduce){.explore-orb,.nl-photo-card img{animation:none;transition:none}.nl-photo-card:hover{transform:none}}
   `;
-  const photoStyle=document.createElement('style'); photoStyle.textContent=photoCss; document.head.appendChild(photoStyle);
+  const photoStyle=document.createElement('style'); photoStyle.id='yanimda-explore-v3'; photoStyle.textContent=photoCss; document.head.appendChild(photoStyle);
+
+  // Product-quality dashboard: a clear next step, a calm daily goal and a
+  // lightweight XP layer. This borrows proven habit mechanics without cloning
+  // another app's visual identity.
+  function getXP(){return Number(localStorage.getItem('yanimda_xp')||0)}
+  function setXP(n){localStorage.setItem('yanimda_xp',String(Math.max(0,n)))}
+  function addXP(n){setXP(getXP()+n)}
+  window.getXP=getXP;
+  const originalMarkLearned = window.markLearned;
+  if(originalMarkLearned && !window.__yanimdaMarkWrapped){
+    window.markLearned=function(w){
+      const before=learned().length; originalMarkLearned(w); if(learned().length>before) addXP(10);
+    };
+    window.__yanimdaMarkWrapped=true;
+  }
+
+  const baseHome=window.renderHome;
+  window.renderHome=function(){
+    baseHome();
+    const l=lang(), safe=typeof esc==='function'?esc:(v=>String(v)), done=learned().length, total=lessons.reduce((n,x)=>n+x.words.length,0), pct=Math.min(100,Math.round(done/total*100));
+    const daily=lessons[new Date().getDate()%lessons.length];
+    const home=document.querySelector('#screen');
+    const oldHero=home.querySelector('.hero');
+    if(oldHero){oldHero.classList.add('yanimda-home-hero'); oldHero.insertAdjacentHTML('beforeend',`<div class="yanimda-daily-strip"><div><span>🎯</span><div><strong>${safe(l==='en'?'Today’s goal':l==='ar'?'هدف اليوم':'Bugünün hedefi')}</strong><small>${safe(l==='en'?'5 minutes of Dutch':l==='ar'?'5 دقائق هولندية':'5 dakika Hollandaca')}</small></div></div><b>${pct}%</b></div>`)}
+    const q=home.querySelector('.quick');
+    const section=[...home.querySelectorAll('.section-head')].find(x=>x.textContent.includes(tr('quick')));
+    if(section){section.insertAdjacentHTML('beforebegin',`<section class="mission-card"><div class="mission-character" aria-hidden="true"><div class="m-ear e1"></div><div class="m-ear e2"></div><div class="m-face"><i></i><i></i><span></span></div></div><div class="mission-copy"><span class="eyebrow">YANIMDA</span><h3>${safe(l==='en'?'Your next little step':l==='ar'?'خطوتك الصغيرة التالية':'Bir sonraki küçük adımın')}</h3><p>${safe(daily.sub[l]||daily.sub.tr)}</p><button class="primary" onclick="showLesson('${daily.id}')">${safe(l==='en'?'Start 5-minute lesson →':l==='ar'?'ابدأ درس 5 دقائق ←':'5 dakikalık derse başla →')}</button></div></section>`)}
+  };
+
+  // A calmer, more structured lesson page: listen → understand → remember.
+  const baseLesson=window.renderLesson;
+  window.renderLesson=function(id){
+    baseLesson(id);
+    const l=lessons.find(x=>x.id===id)||lessons[0], safe=typeof esc==='function'?esc:(v=>String(v));
+    const cards=document.querySelector('.detail-card');
+    if(!cards)return;
+    cards.insertAdjacentHTML('afterbegin',`<div class="lesson-road"><span class="active">1<br><small>${safe(lang()==='en'?'Listen':lang()==='ar'?'استمع':'Dinle')}</small></span><i></i><span>2<br><small>${safe(lang()==='en'?'Understand':lang()==='ar'?'افهم':'Anla')}</small></span><i></i><span>3<br><small>${safe(lang()==='en'?'Remember':lang()==='ar'?'تذكّر':'Hatırla')}</small></span></div>`);
+    const quizBtn=[...document.querySelectorAll('#screen .primary')].find(b=>b.textContent.includes(tr('quiz')));
+    if(quizBtn)quizBtn.textContent='🧠 '+(lang()==='en'?'Mini challenge →':lang()==='ar'?'تحدٍ صغير ←':'Mini meydan okuma →');
+  };
+
+  // Friendly child area: keep it playful, but make the character feel like a
+  // guide rather than decoration.
+  const baseKids=window.renderKids;
+  window.renderKids=function(){
+    baseKids();
+    const l=lang(), safe=typeof esc==='function'?esc:(v=>String(v));
+    const hero=document.querySelector('.kids-hero');
+    if(hero && !hero.querySelector('.yanimda-kid-guide')){
+      hero.insertAdjacentHTML('afterbegin',`<div class="yanimda-kid-guide" aria-hidden="true"><div class="guide-star">✦</div><div class="guide-face"><i></i><i></i><span></span></div><div class="guide-bubble">${safe(l==='en'?'Hi! Let’s learn!':l==='ar'?'مرحباً! هيا نتعلم!':'Merhaba! Hadi öğrenelim!')}</div></div>`);
+    }
+  };
+
+  const productCss=`
+    .yanimda-home-hero{position:relative}.yanimda-daily-strip{margin-top:14px;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 13px;border:1px solid rgba(255,255,255,.08);border-radius:16px;background:rgba(255,255,255,.045)}.yanimda-daily-strip>div{display:flex;align-items:center;gap:9px}.yanimda-daily-strip>div>span{font-size:20px}.yanimda-daily-strip strong,.yanimda-daily-strip small{display:block}.yanimda-daily-strip strong{font-size:12px}.yanimda-daily-strip small{margin-top:2px;color:var(--muted);font-size:11px}.yanimda-daily-strip>b{font-size:18px;color:#ff8c68}.mission-card{display:flex;align-items:center;gap:14px;margin:18px 0;padding:15px;border-radius:22px;border:1px solid rgba(255,107,61,.18);background:linear-gradient(135deg,rgba(255,107,61,.12),rgba(255,255,255,.035));box-shadow:0 14px 35px rgba(0,0,0,.16)}.mission-copy{min-width:0}.mission-copy h3{margin:4px 0 5px;font-size:18px}.mission-copy p{margin:0 0 11px;color:var(--muted);font-size:12px;line-height:1.45}.mission-copy .primary{font-size:12px;padding:9px 11px}.mission-character{flex:0 0 76px;height:76px;position:relative;border-radius:24px;background:linear-gradient(145deg,#ff8b67,#ffcf7b);box-shadow:inset 0 -8px 20px rgba(0,0,0,.08);animation:yanimdaFloat 4s ease-in-out infinite}.m-ear{position:absolute;top:-7px;width:24px;height:24px;border-radius:8px 15px 4px 15px;background:#ff8b67}.m-ear.e1{left:8px;transform:rotate(-20deg)}.m-ear.e2{right:8px;transform:rotate(20deg)}.m-face{position:absolute;inset:17px 13px 12px;border-radius:50%;background:#fff0df}.m-face i{position:absolute;top:16px;width:6px;height:8px;border-radius:50%;background:#182235}.m-face i:first-child{left:15px}.m-face i:nth-child(2){right:15px}.m-face span{position:absolute;left:50%;bottom:12px;width:17px;height:8px;border-bottom:3px solid #182235;border-radius:0 0 20px 20px;transform:translateX(-50%)}.lesson-road{display:flex;align-items:center;justify-content:center;gap:7px;margin:2px 0 18px;padding:8px 5px;border-radius:16px;background:rgba(255,255,255,.035)}.lesson-road span{min-width:42px;text-align:center;color:#8193a9;font-size:11px;font-weight:900;line-height:1.2}.lesson-road span.active{color:#ff8c68}.lesson-road span:first-child{display:block}.lesson-road small{font-size:9px}.lesson-road i{width:25px;height:1px;background:rgba(255,255,255,.12)}.yanimda-kid-guide{display:flex;align-items:center;justify-content:center;gap:12px;margin:-3px 0 13px;position:relative}.guide-face{position:relative;width:62px;height:62px;border-radius:22px;background:linear-gradient(145deg,#ffcf7b,#ff8b67);box-shadow:0 9px 25px rgba(0,0,0,.15);animation:yanimdaFloat 3.5s ease-in-out infinite}.guide-face i{position:absolute;top:24px;width:5px;height:7px;border-radius:50%;background:#182235}.guide-face i:first-child{left:17px}.guide-face i:nth-child(2){right:17px}.guide-face span{position:absolute;left:50%;bottom:14px;width:15px;height:7px;border-bottom:3px solid #182235;border-radius:0 0 20px 20px;transform:translateX(-50%)}.guide-star{color:#ffd34d;font-size:22px;animation:yanimdaSpark 2s ease-in-out infinite}.guide-bubble{padding:9px 12px;border-radius:15px;background:#fff;color:#172033;font-weight:800;font-size:12px;box-shadow:0 7px 20px rgba(0,0,0,.12);position:relative}.guide-bubble:before{content:'';position:absolute;left:-6px;top:22px;border:6px solid transparent;border-right-color:#fff;border-left:0}.kids-hero{overflow:hidden}.kids-card{transition:transform .2s ease}.kids-card:hover{transform:translateY(-3px)}@keyframes yanimdaSpark{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(1.12) rotate(8deg)}}
+    @media(prefers-reduced-motion:reduce){.mission-character,.guide-face,.guide-star{animation:none}.kids-card{transition:none}}
+  `;
+  const productStyle=document.createElement('style'); productStyle.id='yanimda-product-v3'; productStyle.textContent=productCss; document.head.appendChild(productStyle);
+
+  // Global-facing onboarding copy: interface language is chosen first; Dutch is
+  // the learning target for this Netherlands release.
+  const baseSetup=window.setup;
+  window.setup=function(){
+    document.documentElement.lang='en';document.documentElement.dir='ltr';
+    screen.innerHTML=`<div class="setup-screen"><div class="setup-card setup-card-global"><span class="eyebrow">🧡 YANIMDA · Always by your side</span><h1>Choose your language</h1><p class="sub">This is the language YANIMDA will use to explain things to you. You can change it later.</p><div class="language-options"><button class="lang-btn" data-lang="en" onclick="pickLang('en')"><span>🇬🇧</span>English</button><button class="lang-btn" data-lang="tr" onclick="pickLang('tr')"><span>🇹🇷</span>Türkçe</button><button class="lang-btn" data-lang="ar" onclick="pickLang('ar')"><span>🇸🇦</span>العربية</button></div><div class="setup-learning-note"><strong>🇳🇱 Learning now: Nederlands</strong><small>More learning languages can be added as YANIMDA grows.</small></div><button id="continueBtn" class="primary" style="width:100%" onclick="finishSetup()" disabled>Continue →</button></div></div>`;
+    bottomNav.innerHTML='';drawer.innerHTML='';
+  };
+  if(!lang()) setTimeout(()=>window.setup(),0);
 
   // FINAL VOICE LAYER: use a Dutch nl-NL voice when available, wait for iOS/Safari
   // voices to load, and keep adult/kids delivery deliberately clear and gentle.
